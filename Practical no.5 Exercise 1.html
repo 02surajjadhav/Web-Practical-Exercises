@@ -1,45 +1,188 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>DOM Operations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Operations Demo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: #1f2937;
+        }
+
+        p {
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        button {
+            padding: 8px 14px;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            background: #2563eb;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        #demoImage {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #e5e7eb;
+        }
+
+        #demoLink {
+            display: inline-block;
+            margin-top: 10px;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #demoLink:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+        }
+    </style>
 </head>
 <body>
-    <h1 id="heading">Old Heading</h1>
-    <p id="paragraph">Old Paragraph</p>
-    <p id="text">Old Text</p>
-    <img id="myImage"
-         src="https://via.placeholder.com/200"
-         width="200">
-    <br><br>
 
-    <a id="link" href="https://www.google.com">
-        Old Link
-    </a>
-    <br><br>
-  
-    <button onclick="changePage()">Change Content</button>
+    <div class="container">
+        <h1 id="mainHeading">Original Heading</h1>
+
+        <p id="mainParagraph">
+            This is the original paragraph text. It will be changed using innerText.
+        </p>
+
+        <div class="section">
+            <h2>DOM Operations</h2>
+            <div class="controls">
+                <button onclick="changeHeading()">Change Heading (innerHTML)</button>
+                <button onclick="changeParagraph()">Change Paragraph (innerText)</button>
+                <button onclick="showTextContent()">Show textContent</button>
+                <button onclick="changeTextStyle()">Change Color & Font Size</button>
+                <button onclick="changeImage()">Change Image</button>
+                <button onclick="changeLink()">Change Hyperlink</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Image (changed dynamically)</h3>
+            <img 
+                id="demoImage"
+                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" 
+                alt="Demo image"
+                width="600"
+                height="400"
+            >
+        </div>
+
+        <div class="section">
+            <h3>Hyperlink (changed dynamically)</h3>
+            <a 
+                id="demoLink"
+                href="https://developer.mozilla.org"
+                target="_blank"
+            >
+                MDN Web Docs (original link)
+            </a>
+        </div>
+
+        <div class="section">
+            <h3>Output for textContent</h3>
+            <p id="textContentOutput" style="color:#059669; font-weight:bold;"></p>
+        </div>
+    </div>
+
     <script>
-        function changePage() {
-            document.getElementById("heading").innerHTML =
-                "Welcome to My Webpage";
+        // Change heading using innerHTML
+        function changeHeading() {
+            const heading = document.getElementById("mainHeading");
+            heading.innerHTML = "Heading Changed Using <strong>innerHTML</strong>";
+        }
 
-            document.getElementById("paragraph").innerText =
-                "This paragraph has been changed using innerText.";
+        // Change paragraph using innerText
+        function changeParagraph() {
+            const paragraph = document.getElementById("mainParagraph");
+            paragraph.innerText = "This paragraph text was changed using innerText. It reflects the rendered text content.";
+        }
 
-            document.getElementById("text").textContent =
-                "This text is displayed using textContent.";
+        // Display text using textContent
+        function showTextContent() {
+            const heading = document.getElementById("mainHeading");
+            const output = document.getElementById("textContentOutput");
 
-            document.getElementById("text").style.color = "blue";
-            document.getElementById("text").style.fontSize = "25px";
+            // textContent returns the text content of the node and its descendants [11]
+            output.textContent = "textContent of heading: " + heading.textContent;
+        }
 
-            document.getElementById("myImage").src =
-                "https://via.placeholder.com/200/00ff00";
+        // Change text color and font size
+        function changeTextStyle() {
+            const paragraph = document.getElementById("mainParagraph");
+            paragraph.style.color = "#b91c1c"; // dark red
+            paragraph.style.fontSize = "18px";
+            paragraph.style.fontWeight = "bold";
+        }
 
-            document.getElementById("link").href =
-                "https://www.wikipedia.org";
+        // Change image dynamically
+        function changeImage() {
+            const img = document.getElementById("demoImage");
 
-            document.getElementById("link").innerText =
-                "Visit Wikipedia";
+            // Toggle between two images
+            const currentSrc = img.getAttribute("src");
+            const newSrc = currentSrc.includes("photo-1517694712202")
+                ? "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80"
+                : "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80";
+
+            img.setAttribute("src", newSrc);
+            img.setAttribute("alt", "Changed demo image");
+        }
+
+        // Change hyperlink dynamically
+        function changeLink() {
+            const link = document.getElementById("demoLink");
+
+            const currentHref = link.getAttribute("href");
+            if (currentHref.includes("developer.mozilla.org")) {
+                link.setAttribute("href", "https://www.w3schools.com");
+                link.textContent = "W3Schools (changed link)";
+            } else {
+                link.setAttribute("href", "https://developer.mozilla.org");
+                link.textContent = "MDN Web Docs (original link)";
+            }
         }
     </script>
 </body>
