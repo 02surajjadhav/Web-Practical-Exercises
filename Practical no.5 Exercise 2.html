@@ -1,65 +1,166 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>JavaScript DOM Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Full Demo</title>
+
     <style>
         body {
-            text-align: center;
-            font-family: Arial;
-            background-color: lightblue;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9fafb;
+            transition: background-color 0.3s ease;
         }
-        .newClass {
-            color: red;
-            font-size: 35px;
-            font-family: Georgia;
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
         }
+
+        h1 {
+            color: #111827;
+            margin-top: 0;
+        }
+
+        p {
+            color: #374151;
+            line-height: 1.6;
+        }
+
         img {
-            width: 200px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #e5e7eb;
         }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
         button {
-            padding: 10px 20px;
-            background-color: green;
-            color: white;
+            margin-top: 15px;
+            padding: 10px 18px;
+            font-size: 15px;
             border: none;
+            border-radius: 6px;
+            background: #2563eb;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        /* Alternate CSS class to switch via JavaScript */
+        .highlight-mode {
+            background-color: #ecfdf5;
+            border: 2px solid #10b981;
+        }
+
+        .highlight-mode h1 {
+            color: #065f46;
+        }
+
+        .highlight-mode p {
+            color: #064e3b;
         }
     </style>
 </head>
 <body>
-    <h1 id="heading">My Heading</h1>
-    <p id="paragraph">This is my paragraph.</p>
-    <img id="image" src="https://via.placeholder.com/200">
-    <br><br>
-    <a id="link" href="https://www.google.com">
-        Visit Google
-    </a>
-    <br><br>
 
-    <button onclick="changeContent()">Click Me</button>
+    <div class="container" id="mainContainer">
+        <h1 id="mainHeading">Welcome to the DOM Demo Page</h1>
+
+        <p id="mainParagraph">
+            This is the original paragraph. Click the button below to change multiple elements on this page dynamically using JavaScript.
+        </p>
+
+        <img 
+            id="mainImage"
+            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=640&q=80" 
+            alt="Demo image - laptop with code"
+        >
+
+        <p>
+            Visit:
+            <a 
+                id="mainLink"
+                href="https://developer.mozilla.org"
+                target="_blank"
+            >
+                MDN Web Docs (original link)
+            </a>
+        </p>
+
+        <button id="changeButton" onclick="applyChanges()">
+            Apply Changes
+        </button>
+    </div>
+
     <script>
-        function changeContent() {
-          
-            document.getElementById("heading").innerHTML =
-                "Heading Changed!";
+        function applyChanges() {
+            // Change heading text
+            const heading = document.getElementById("mainHeading");
+            heading.textContent = "Heading Changed Using JavaScript";
 
-            document.getElementById("paragraph").innerHTML =
-                "The paragraph has been changed using JavaScript.";
+            // Change paragraph content
+            const paragraph = document.getElementById("mainParagraph");
+            paragraph.textContent =
+                "This paragraph content has been changed dynamically. It now shows new text using JavaScript.";
 
-            document.getElementById("image").src =
-                "https://via.placeholder.com/200/ff0000";
+            // Change image
+            const img = document.getElementById("mainImage");
+            const currentSrc = img.getAttribute("src");
 
-            document.getElementById("link").href =
-                "https://www.wikipedia.org";
+            const newSrc = currentSrc.includes("photo-1517694712202")
+                ? "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=640&q=80"
+                : "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=640&q=80";
 
-            document.getElementById("link").innerHTML =
-                "Visit Wikipedia";
+            img.setAttribute("src", newSrc);
+            img.setAttribute("alt", "Changed demo image");
 
-            document.body.style.backgroundColor = "lightgreen";
+            // Change hyperlink
+            const link = document.getElementById("mainLink");
+            const currentHref = link.getAttribute("href");
 
-            document.getElementById("paragraph").style.fontSize =
-                "25px";
+            if (currentHref.includes("developer.mozilla.org")) {
+                link.setAttribute("href", "https://www.w3schools.com");
+                link.textContent = "W3Schools (changed link)";
+            } else {
+                link.setAttribute("href", "https://developer.mozilla.org");
+                link.textContent = "MDN Web Docs (original link)";
+            }
 
-            document.getElementById("heading").className =
-                "newClass";
+            // Change background color of the page
+            document.body.style.backgroundColor = "#e0e7ff"; // light indigo
+
+            // Change font size of the paragraph
+            paragraph.style.fontSize = "18px";
+            paragraph.style.fontWeight = "600";
+
+            // Change CSS class using JavaScript (classList) [21][28]
+            const container = document.getElementById("mainContainer");
+
+            if (container.classList.contains("highlight-mode")) {
+                container.classList.remove("highlight-mode");
+            } else {
+                container.classList.add("highlight-mode");
+            }
         }
     </script>
 </body>
