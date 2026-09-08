@@ -1,46 +1,203 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>JavaScript Programs</title>
+    <meta charset="UTF-8">
+    <title>JavaScript Basics Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 13px;
+        }
+        .output {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            font-size: 13px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            background: #2563eb;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1d4ed8;
+        }
+    </style>
 </head>
 <body>
-    <h1>JavaScript Examples</h1>
-    <script>
-        let name = "John";
-        let age = 20;
+    <div class="container">
+        <h1>JavaScript Basics Demo</h1>
+        <p>Open the browser console (F12) or click the button to see the output below.</p>
 
-        document.write("<h2>1. Variables</h2>");
-        document.write("Name: " + name + "<br>");
-        document.write("Age: " + age + "<br><br>");
+        <button id="runBtn">Run JavaScript Demo</button>
 
-        let a = 10;
-        let b = 5;
+        <h2>Output</h2>
+        <div id="output" class="output"></div>
 
-        document.write("<h2>2. Arithmetic Operators</h2>");
-        document.write("Addition: " + (a + b) + "<br>");
-        document.write("Subtraction: " + (a - b) + "<br>");
-        document.write("Multiplication: " + (a * b) + "<br>");
-        document.write("Division: " + (a / b) + "<br>");
-        document.write("Remainder: " + (a % b) + "<br><br>");
+        <script>
+            // This function runs all demonstrations
+            function runDemo() {
+                const outputDiv = document.getElementById('output');
+                let output = '';
 
-        let marks = 60;
-        document.write("<h2>3. Conditional Statement</h2>");
-        if (marks >= 40) {
-            document.write("Result: Pass<br><br>");
-        } else {
-            document.write("Result: Fail<br><br>");
-        }
-        document.write("<h2>4. Loop</h2>");
-        for (let i = 1; i <= 5; i++) {
-            document.write(i + "<br>");
-        }
-        document.write("<br>");
-        function add(x, y) {
-            return x + y;
-        }
-        let result = add(10, 20);
-        document.write("<h2>5. JavaScript Function</h2>");
-        document.write("Sum: " + result);
-    </script>
+                function log(message) {
+                    output += message + '
+';
+                }
+
+                // 1. Variables
+                log('--- 1. Variables ---');
+                let name = 'Suraj';
+                const age = 20;
+                var isStudent = true;
+
+                log('Name: ' + name);
+                log('Age: ' + age);
+                log('Is Student: ' + isStudent);
+
+                // Update a variable
+                age = 21; // This will cause an error in strict mode because age is const
+                // To demonstrate correctly, use a let variable for change:
+                let currentAge = 20;
+                currentAge = 21;
+                log('Updated currentAge: ' + currentAge);
+                log('');
+
+                // 2. Arithmetic Operators
+                log('--- 2. Arithmetic Operators ---');
+                let a = 10;
+                let b = 3;
+
+                log('a = ' + a + ', b = ' + b);
+                log('a + b = ' + (a + b));
+                log('a - b = ' + (a - b));
+                log('a * b = ' + (a * b));
+                log('a / b = ' + (a / b));
+                log('a % b = ' + (a % b));
+                log('a ** b = ' + (a ** b)); // exponentiation
+                log('');
+
+                // 3. Conditional Statements
+                log('--- 3. Conditional Statements ---');
+                let score = 78;
+
+                if (score >= 90) {
+                    log('Grade: A');
+                } else if (score >= 75) {
+                    log('Grade: B');
+                } else if (score >= 60) {
+                    log('Grade: C');
+                } else {
+                    log('Grade: D');
+                }
+
+                // Ternary operator example
+                let result = (score >= 60) ? 'Pass' : 'Fail';
+                log('Result: ' + result);
+                log('');
+
+                // 4. Loops
+                log('--- 4. Loops ---');
+
+                // For loop
+                log('For loop (1 to 5):');
+                for (let i = 1; i <= 5; i++) {
+                    log('i = ' + i);
+                }
+
+                // While loop
+                log('While loop (countdown from 3):');
+                let count = 3;
+                while (count > 0) {
+                    log('count = ' + count);
+                    count--;
+                }
+
+                // For...of loop (array)
+                log('For...of loop over an array:');
+                const colors = ['Red', 'Green', 'Blue'];
+                for (const color of colors) {
+                    log('Color: ' + color);
+                }
+                log('');
+
+                // 5. JavaScript Functions
+                log('--- 5. JavaScript Functions ---');
+
+                // Function declaration
+                function greet(personName) {
+                    return 'Hello, ' + personName + '!';
+                }
+
+                log(greet('Suraj'));
+
+                // Function with parameters and return
+                function add(x, y) {
+                    return x + y;
+                }
+
+                log('add(5, 7) = ' + add(5, 7));
+
+                // Arrow function
+                const square = (n) => n * n;
+                log('square(6) = ' + square(6));
+
+                // Function using conditionals
+                function checkEvenOdd(num) {
+                    if (num % 2 === 0) {
+                        return num + ' is even';
+                    } else {
+                        return num + ' is odd';
+                    }
+                }
+
+                log(checkEvenOdd(10));
+                log(checkEvenOdd(15));
+
+                // Display all logs in the page
+                outputDiv.textContent = output;
+            }
+
+            // Attach event to button
+            document.getElementById('runBtn').addEventListener('click', runDemo);
+
+            // Optionally run once on load
+            // runDemo();
+        </script>
+    </div>
 </body>
 </html>
