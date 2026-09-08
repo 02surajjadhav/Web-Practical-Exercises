@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM Full Demo</title>
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +12,6 @@
             background-color: #f9fafb;
             transition: background-color 0.3s ease;
         }
-
         .container {
             max-width: 700px;
             margin: 40px auto;
@@ -22,17 +20,14 @@
             border-radius: 10px;
             box-shadow: 0 4px 14px rgba(0,0,0,0.08);
         }
-
         h1 {
             color: #111827;
             margin-top: 0;
         }
-
         p {
             color: #374151;
             line-height: 1.6;
         }
-
         img {
             max-width: 100%;
             height: auto;
@@ -40,17 +35,14 @@
             margin-top: 15px;
             border: 1px solid #e5e7eb;
         }
-
         a {
             color: #2563eb;
             text-decoration: none;
             font-weight: bold;
         }
-
         a:hover {
             text-decoration: underline;
         }
-
         button {
             margin-top: 15px;
             padding: 10px 18px;
@@ -61,41 +53,32 @@
             color: #ffffff;
             cursor: pointer;
         }
-
         button:hover {
             background: #1d4ed8;
         }
-
-        /* Alternate CSS class to switch via JavaScript */
         .highlight-mode {
             background-color: #ecfdf5;
             border: 2px solid #10b981;
         }
-
         .highlight-mode h1 {
             color: #065f46;
         }
-
         .highlight-mode p {
             color: #064e3b;
         }
     </style>
 </head>
 <body>
-
     <div class="container" id="mainContainer">
         <h1 id="mainHeading">Welcome to the DOM Demo Page</h1>
-
         <p id="mainParagraph">
             This is the original paragraph. Click the button below to change multiple elements on this page dynamically using JavaScript.
         </p>
-
         <img 
             id="mainImage"
             src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=640&q=80" 
             alt="Demo image - laptop with code"
         >
-
         <p>
             Visit:
             <a 
@@ -106,38 +89,26 @@
                 MDN Web Docs (original link)
             </a>
         </p>
-
         <button id="changeButton" onclick="applyChanges()">
             Apply Changes
         </button>
     </div>
-
     <script>
         function applyChanges() {
-            // Change heading text
             const heading = document.getElementById("mainHeading");
             heading.textContent = "Heading Changed Using JavaScript";
-
-            // Change paragraph content
             const paragraph = document.getElementById("mainParagraph");
             paragraph.textContent =
                 "This paragraph content has been changed dynamically. It now shows new text using JavaScript.";
-
-            // Change image
             const img = document.getElementById("mainImage");
             const currentSrc = img.getAttribute("src");
-
             const newSrc = currentSrc.includes("photo-1517694712202")
                 ? "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=640&q=80"
                 : "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=640&q=80";
-
             img.setAttribute("src", newSrc);
             img.setAttribute("alt", "Changed demo image");
-
-            // Change hyperlink
             const link = document.getElementById("mainLink");
             const currentHref = link.getAttribute("href");
-
             if (currentHref.includes("developer.mozilla.org")) {
                 link.setAttribute("href", "https://www.w3schools.com");
                 link.textContent = "W3Schools (changed link)";
@@ -145,17 +116,10 @@
                 link.setAttribute("href", "https://developer.mozilla.org");
                 link.textContent = "MDN Web Docs (original link)";
             }
-
-            // Change background color of the page
             document.body.style.backgroundColor = "#e0e7ff"; // light indigo
-
-            // Change font size of the paragraph
             paragraph.style.fontSize = "18px";
             paragraph.style.fontWeight = "600";
-
-            // Change CSS class using JavaScript (classList) [21][28]
             const container = document.getElementById("mainContainer");
-
             if (container.classList.contains("highlight-mode")) {
                 container.classList.remove("highlight-mode");
             } else {
