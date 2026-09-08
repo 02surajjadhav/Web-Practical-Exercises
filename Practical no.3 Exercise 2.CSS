@@ -1,60 +1,114 @@
+/* exercise2.css */
+
+/* Page setup with gradient background */
 body {
-    background: linear-gradient(lightblue, purple);
-    text-align: center;
-    font-family: Arial;
-    color: white;
+    margin: 0;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f2937;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
 }
 
+/* Main container */
+.container {
+    background: #ffffff;
+    max-width: 700px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    text-align: center; /* custom text alignment */
+}
+
+/* Styled heading */
 h1 {
-    color: yellow;
-    font-size: 40px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #4c1d95; /* deep purple */
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
 }
 
+/* Styled paragraph */
 p {
-    font-size: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #374151;
+    margin-bottom: 20px;
 }
 
-button {
-    padding: 10px 20px;
-    background: orange;
-    color: white;
+/* Button with hover transition effect */
+.btn {
+    display: inline-block;
+    padding: 10px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
     border: none;
-    transition: 0.5s;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    text-decoration: none;
+    margin-top: 10px;
 }
 
-button:hover {
-    background: green;
-    transform: scale(1.2);
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+    background: linear-gradient(90deg, #1d4ed8, #6d28d9);
 }
 
-.box {
-    width: 150px;
-    height: 100px;
-    background: red;
-    margin: 40px auto;
-    padding-top: 30px;
-    box-sizing: border-box;
+/* Image or box with transform effect */
+.image-box {
+    margin: 25px auto 15px;
+    max-width: 320px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.box:hover {
-    transform: rotate(10deg);
+.image-box img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-.rotate {
-    width: 100px;
-    height: 100px;
-    background: blue;
-    margin: 30px auto;
-    padding-top: 40px;
-    box-sizing: border-box;
-
-    animation: rotate 3s infinite;
+/* Transform effect on hover */
+.image-box:hover {
+    transform: scale(1.04) rotate(1deg);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
 }
-@keyframes rotate {
-    from {
+
+/* Rotating animated box using CSS keyframes */
+.animated-box {
+    width: 80px;
+    height: 80px;
+    margin: 30px auto 10px;
+    background: linear-gradient(135deg, #f43f5e, #f59e0b);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(244, 63, 94, 0.35);
+    animation: rotateBox 4s linear infinite;
+}
+
+/* Keyframes for rotation */
+@keyframes rotateBox {
+    0% {
         transform: rotate(0deg);
     }
-    to {
+    100% {
         transform: rotate(360deg);
     }
+}
+
+/* Small caption text */
+.caption {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 8px;
 }
