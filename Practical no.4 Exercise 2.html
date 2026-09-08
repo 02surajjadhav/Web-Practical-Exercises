@@ -1,48 +1,209 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Registration Form</title>
-    <script>
-        function validateForm() {
-            let name = document.getElementById("name").value;
-            let email = document.getElementById("email").value;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form Using JavaScript</title>
 
-            if (name == "") {
-                alert("Please enter your name");
-                return false;
-            }
-            if (email == "") {
-                alert("Please enter your email");
-                return false;
-            }
+    <style>
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #dbeafe, #ede9fe);
+        }
 
-            if (!email.includes("@")) {
-                alert("Please enter a valid email");
-                return false;
-            }
-            alert("Registration Successful!");
-            return true;
+        .form-container {
+            width: 100%;
+            max-width: 450px;
+            margin: auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
         }
-        function clickButton() {
-            alert("Submit button clicked!");
+
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+            font-size: 25px;
         }
-        function mouseOver() {
-            alert("Mouse is over the heading!");
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
-    </script>
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #9ca3af;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 4px #93c5fd;
+        }
+
+        .button-group {
+            text-align: center;
+            margin-top: 22px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        #submitButton {
+            color: white;
+            background-color: #2563eb;
+        }
+
+        #submitButton:hover {
+            background-color: #1d4ed8;
+        }
+
+        #resetButton {
+            background-color: #e5e7eb;
+            color: #111827;
+        }
+
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #15803d;
+        }
+
+        .help-text {
+            color: #6b7280;
+            font-size: 13px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1 onmouseover="mouseOver()">Registration Form</h1>
-    <form onsubmit="return validateForm()">
-        <label>Name:</label>
-        <input type="text" id="name">
-        <br><br>
-        <label>Email:</label>
-        <input type="text" id="email">
-        <br><br>
-        <button type="submit" onclick="clickButton()">
-            Submit
-        </button>
-    </form>
+
+    <div class="form-container">
+        <h1>Student Registration Form</h1>
+
+        <!-- onsubmit event -->
+        <form id="registrationForm" onsubmit="validateForm(event)">
+
+            <label for="name">Full Name</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                onmouseover="showNameHint()"
+            >
+
+            <label for="email">Email Address</label>
+            <input
+                type="text"
+                id="email"
+                placeholder="example@gmail.com"
+                onmouseover="showEmailHint()"
+            >
+
+            <p class="help-text">Move the mouse over a field to see a hint.</p>
+
+            <div class="button-group">
+                <!-- onclick event -->
+                <button
+                    type="submit"
+                    id="submitButton"
+                    onclick="buttonClicked()"
+                >
+                    Submit
+                </button>
+
+                <button type="reset" id="resetButton">
+                    Reset
+                </button>
+            </div>
+
+            <p id="message"></p>
+        </form>
+    </div>
+
+    <script>
+        // onmouseover event for Name input
+        function showNameHint() {
+            document.getElementById("message").textContent =
+                "Enter at least 3 characters for your full name.";
+        }
+
+        // onmouseover event for Email input
+        function showEmailHint() {
+            document.getElementById("message").textContent =
+                "Enter a valid email address, for example: student@gmail.com";
+        }
+
+        // onclick event for Submit button
+        function buttonClicked() {
+            console.log("Submit button was clicked.");
+        }
+
+        // onsubmit event and validation function
+        function validateForm(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let message = document.getElementById("message");
+
+            // Name validation
+            if (name === "") {
+                alert("Name cannot be empty.");
+                message.textContent = "Please enter your full name.";
+                document.getElementById("name").focus();
+                return false;
+            }
+
+            if (name.length < 3) {
+                alert("Name must contain at least 3 characters.");
+                message.textContent = "Please enter a valid name.";
+                document.getElementById("name").focus();
+                return false;
+            }
+
+            // Email validation using a regular expression
+            let emailPattern = /^[^s@]+@[^s@]+.[^s@]+$/;
+
+            if (email === "") {
+                alert("Email address cannot be empty.");
+                message.textContent = "Please enter your email address.";
+                document.getElementById("email").focus();
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                message.textContent = "Invalid email format.";
+                document.getElementById("email").focus();
+                return false;
+            }
+
+            // Success alert message
+            alert("Registration submitted successfully!");
+            message.textContent =
+                "Registration successful. Welcome, " + name + "!";
+
+            return true;
+        }
+    </script>
+
 </body>
 </html>
