@@ -1,20 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>CSS3 Example</title>
-    <link rel="stylesheet" href="Practical no.3 Exercise 2.CSS">
+    <meta charset="UTF-8">
+    <title>CSS3 Exercise – Gradient, Transforms, Animation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link external CSS -->
+    <link rel="stylesheet" href="exercise2.css">
+
+    <!-- Optional: load a custom font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="container">
+        <h1>CSS3 Features Demo</h1>
+        <p>
+            This page demonstrates a gradient background, styled headings and paragraphs, 
+            custom fonts, centered text, a button with hover transition, an image with a 
+            transform effect, and a rotating animated box using CSS keyframes.
+        </p>
 
-    <h1>My CSS3 Webpage</h1>
+        <!-- Button with hover transition -->
+        <button class="btn" type="button">Hover Me</button>
 
-    <p>This is a simple webpage created using CSS3.</p>
+        <!-- Image with transform effect -->
+        <div class="image-box">
+            <img 
+                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=640&q=80" 
+                alt="Laptop showing code"
+            >
+        </div>
+        <div class="caption">Hover over the image to see the transform effect.</div>
 
-    <button>Click Me</button>
-
-    <div class="box">Hover Me</div>
-
-    <div class="rotate">CSS3</div>
-
+        <!-- Rotating animated box -->
+        <div class="animated-box" title="Rotating animated box"></div>
+        <div class="caption">This box rotates continuously using CSS keyframes.</div>
+    </div>
 </body>
 </html>
