@@ -1,66 +1,167 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Student Registration Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body{
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 8px 10px;
+            margin-top: 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+        .radio-group {
+            margin-top: 6px;
+        }
+        .radio-group label {
+            display: inline-block;
+            margin-right: 15px;
+            font-weight: normal;
+        }
+        .button-group {
+            margin-top: 20px;
             text-align: center;
         }
-        form{
-            display: inline-block;
-            text-align: left;
+        button {
+            padding: 8px 18px;
+            margin: 0 6px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        button[type="submit"] {
+            background: #2563eb;
+            color: #fff;
+        }
+        button[type="reset"] {
+            background: #e5e7eb;
+            color: #111827;
         }
     </style>
 </head>
-
 <body>
+    <div class="form-container">
+        <h1>Student Registration Form</h1>
 
-    <h1>Student Registration Form</h1>
+        <form action="#" method="post">
+            <!-- Full Name -->
+            <label for="fullName">Full Name</label>
+            <input 
+                type="text" 
+                id="fullName" 
+                name="fullName" 
+                placeholder="Enter your full name" 
+                required
+            >
 
-    <form>
+            <!-- Email Address -->
+            <label for="email">Email Address</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                placeholder="example@domain.com" 
+                required
+            >
 
-        <label for="fullname">Full Name:</label>
-        <input type="text" id="fullname" name="fullname" required>
-        <br><br>
+            <!-- Password -->
+            <label for="password">Password</label>
+            <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                placeholder="Create a password" 
+                required
+            >
 
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" required>
-        <br><br>
+            <!-- Mobile Number -->
+            <label for="mobile">Mobile Number</label>
+            <input 
+                type="tel" 
+                id="mobile" 
+                name="mobile" 
+                placeholder="e.g., 9876543210" 
+                pattern="[0-9]{10}" 
+                title="Please enter a 10-digit mobile number"
+                required
+            >
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br><br>
+            <!-- Date of Birth -->
+            <label for="dob">Date of Birth</label>
+            <input 
+                type="date" 
+                id="dob" 
+                name="dob" 
+                required
+            >
 
-        <label for="mobile">Mobile Number:</label>
-        <input type="tel" id="mobile" name="mobile" required>
-        <br><br>
+            <!-- Gender (Radio Buttons) -->
+            <label>Gender</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="gender" value="Male" required> Male
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="Female"> Female
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="Other"> Other
+                </label>
+            </div>
 
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" required>
-        <br><br>
+            <!-- Address (Textarea) -->
+            <label for="address">Address</label>
+            <textarea 
+                id="address" 
+                name="address" 
+                placeholder="Enter your full address"
+                required
+            ></textarea>
 
-        <label>Gender:</label>
-
-        <input type="radio" id="male" name="gender" value="male">
-        <label for="male">Male</label>
-
-        <input type="radio" id="female" name="gender" value="female">
-        <label for="female">Female</label>
-
-        <input type="radio" id="other" name="gender" value="other">
-        <label for="other">Other</label>
-
-        <br><br>
-
-        <label for="address">Address:</label>
-        <br>
-        <textarea id="address" name="address" rows="5" cols="40"></textarea>
-        <br><br>
-
-        <input type="submit" value="Submit">
-        <input type="reset" value="Reset">
-
-    </form>
-
+            <!-- Submit and Reset Buttons -->
+            <div class="button-group">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
