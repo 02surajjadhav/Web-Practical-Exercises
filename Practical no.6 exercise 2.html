@@ -1,0 +1,32 @@
+import React from "react";
+import "./App.css";
+
+function StudentProfile() {
+  return (
+    <div className="profile-card">
+      <img
+        src="/college-logo.png"
+        alt="College Logo"
+        className="college-logo"
+      />
+
+      <h2>College Student Profile</h2>
+
+      <div className="student-details">
+        <h3>Suraj Jadhav</h3>
+        <p><strong>Roll Number:</strong> 101</p>
+        <p><strong>Department:</strong> AIML</p>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="container">
+      <StudentProfile />
+    </div>
+  );
+}
+
+export default App;
