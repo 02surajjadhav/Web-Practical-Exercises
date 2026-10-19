@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #eef2f7;
+}
+
+.dashboard {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.dashboard-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 30px;
+  text-align: center;
+  background: white;
+  border: 2px solid #cbd5e1;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  color: #1e3a8a;
+  font-size: 26px;
+  margin-bottom: 25px;
+}
+
+.profile {
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.avatar {
+  width: 85px;
+  height: 85px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.profile h2 {
+  color: #334155;
+}
+
+.profile p {
+  color: #475569;
+  overflow-wrap: anywhere;
+}
+
+.status-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 25px 0 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.status-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.green {
+  background: #16a34a;
+}
+
+.red {
+  background: #dc2626;
+}
+
+.online {
+  color: #16a34a;
+}
+
+.offline {
+  color: #dc2626;
+}
+
+.message {
+  padding: 12px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #1d4ed8;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(37, 99, 235, 0.3);
+}
+
+.lifecycle {
+  margin-top: 20px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+@media (max-width: 480px) {
+  .dashboard-card {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .profile {
+    padding: 15px;
+  }
+}
