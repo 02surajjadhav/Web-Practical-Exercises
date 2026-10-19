@@ -1,0 +1,109 @@
+import React, { useState } from "react";
+
+function StudentForm() {
+  const [student, setStudent] = useState({
+    name: "",
+    prn: "",
+    course: "",
+    email: "",
+    mobile: ""
+  });
+
+  const [students, setStudents] = useState([]);
+
+  const handleChange = (e) => {
+    setStudent({
+      ...student,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setStudents([...students, student]);
+
+    setStudent({
+      name: "",
+      prn: "",
+      course: "",
+      email: "",
+      mobile: ""
+    });
+  };
+
+  return (
+    <div className="container">
+      <h2>Student Registration Form</h2>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Student Name"
+          value={student.name}
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          type="text"
+          name="prn"
+          placeholder="PRN Number"
+          value={student.prn}
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          type="text"
+          name="course"
+          placeholder="Course"
+          value={student.course}
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={student.email}
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          type="tel"
+          name="mobile"
+          placeholder="Mobile Number"
+          value={student.mobile}
+          onChange={handleChange}
+          pattern="[0-9]{10}"
+          title="Enter a 10-digit mobile number"
+          required
+        />
+
+        <button type="submit">Add Student</button>
+      </form>
+
+      <h2>Student Records</h2>
+
+      {students.length === 0 ? (
+        <p>No student records added.</p>
+      ) : (
+        students.map((s, index) => (
+          <div className="student-card" key={index}>
+            <p><b>Student Name:</b> {s.name}</p>
+            <p><b>PRN Number:</b> {s.prn}</p>
+            <p><b>Course:</b> {s.course}</p>
+            <p><b>Email:</b> {s.email}</p>
+            <p><b>Mobile Number:</b> {s.mobile}</p>
+          </div>
+        ))
+      )}
+    </div>
+  );
+}
+
+export default StudentForm;
