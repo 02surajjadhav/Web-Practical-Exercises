@@ -1,0 +1,67 @@
+import React, { Component } from "react";
+import "./App.css";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      userName: "Suraj Jadhav",
+      isOnline: true,
+      lastUpdated: new Date().toLocaleString()
+    };
+  }
+
+  componentDidMount() {
+    console.log("Component Mounted");
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.isOnline !== this.state.isOnline) {
+      console.log("User status updated");
+    }
+  }
+
+  componentWillUnmount() {
+    console.log("Component will unmount");
+  }
+
+  toggleStatus = () => {
+    this.setState((prevState) => ({
+      isOnline: !prevState.isOnline,
+      lastUpdated: new Date().toLocaleString()
+    }));
+  };
+
+  render() {
+    const { userName, isOnline, lastUpdated } = this.state;
+
+    return (
+      <div className="container">
+        <div className="status-card">
+          <h1>User Status Monitor</h1>
+
+          <h2>{userName}</h2>
+
+          <p className="label">Current Status</p>
+
+          <div className={isOnline ? "online" : "offline"}>
+            {isOnline ? "Online" : "Offline"}
+          </div>
+
+          <p className="time">
+            <strong>Last Updated:</strong>
+            <br />
+            {lastUpdated}
+          </p>
+
+          <button onClick={this.toggleStatus}>
+            {isOnline ? "Go Offline" : "Go Online"}
+          </button>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
