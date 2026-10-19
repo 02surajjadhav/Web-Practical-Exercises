@@ -1,0 +1,26 @@
+import React from "react";
+import "./Student.css";
+
+function Student(props) {
+  return (
+    <div className="student-card">
+      <img
+        src={props.photo}
+        alt="Student Profile"
+        className="profile-photo"
+      />
+
+      <h2>{props.name}</h2>
+
+      <div className="student-info">
+        <p><strong>Roll Number:</strong> {props.rollNo}</p>
+        <p><strong>Branch:</strong> {props.branch}</p>
+        <p><strong>Year:</strong> {props.year}</p>
+        <p><strong>Email:</strong> {props.email}</p>
+        <p><strong>Mobile:</strong> {props.mobile}</p>
+      </div>
+    </div>
+  );
+}
+
+export default Student;
