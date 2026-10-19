@@ -1,0 +1,87 @@
+import React, { Component } from "react";
+import "./App.css";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      userName: "Suraj Jadhav",
+      rollNo: "101",
+      department: "Artificial Intelligence and Machine Learning",
+      isOnline: true,
+      message: "Welcome! Component is mounted."
+    };
+  }
+
+  componentDidMount() {
+    console.log("Dashboard component mounted");
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.isOnline !== this.state.isOnline) {
+      this.setState({
+        message: this.state.isOnline
+          ? "User is now Online!"
+          : "User is now Offline!"
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    console.log("Dashboard component unmounted");
+  }
+
+  toggleStatus = () => {
+    this.setState((prevState) => ({
+      isOnline: !prevState.isOnline
+    }));
+  };
+
+  render() {
+    const { userName, rollNo, department, isOnline, message } =
+      this.state;
+
+    return (
+      <div className="dashboard">
+        <div className="dashboard-card">
+          <h1>Online User Status Dashboard</h1>
+
+          <div className="profile">
+            <div className="avatar">
+              {userName.charAt(0)}
+            </div>
+
+            <h2>{userName}</h2>
+            <p><strong>Roll Number:</strong> {rollNo}</p>
+            <p><strong>Department:</strong> {department}</p>
+          </div>
+
+          <div className="status-section">
+            <span
+              className={`status-dot ${
+                isOnline ? "green" : "red"
+              }`}
+            ></span>
+
+            <span className={isOnline ? "online" : "offline"}>
+              {isOnline ? "Online" : "Offline"}
+            </span>
+          </div>
+
+          <p className="message">{message}</p>
+
+          <button onClick={this.toggleStatus}>
+            {isOnline ? "Go Offline" : "Go Online"}
+          </button>
+
+          <p className="lifecycle">
+            Component Status: Mounted
+          </p>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
