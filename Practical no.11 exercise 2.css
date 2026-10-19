@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #60a5fa, #a5b4fc);
+}
+
+.dashboard {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.weather-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h1 {
+  color: #1d4ed8;
+  font-size: 28px;
+}
+
+.subtitle {
+  color: #64748b;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.search-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.search-form button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background: #1d4ed8;
+}
+
+.search-form button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.city-info {
+  padding: 20px;
+  background: #eff6ff;
+  border-radius: 15px;
+}
+
+.city-info h2 {
+  color: #1e3a8a;
+  overflow-wrap: anywhere;
+}
+
+.weather-icon {
+  font-size: 65px;
+  margin: 10px;
+}
+
+.temperature {
+  font-size: 48px;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.detail-box {
+  padding: 20px 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.detail-icon {
+  font-size: 30px;
+}
+
+.detail-box h3 {
+  color: #475569;
+  font-size: 16px;
+}
+
+.detail-box p {
+  color: #2563eb;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.error {
+  color: #dc2626;
+}
+
+.placeholder {
+  color: #64748b;
+}
+
+.footer {
+  margin-top: 25px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+@media (max-width: 480px) {
+  .weather-card {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 23px;
+  }
+
+  .search-form {
+    flex-direction: column;
+  }
+
+  .temperature {
+    font-size: 40px;
+  }
+
+  .detail-box {
+    padding: 15px 5px;
+  }
+}
