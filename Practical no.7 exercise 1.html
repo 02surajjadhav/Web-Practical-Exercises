@@ -1,0 +1,55 @@
+import React, { Component } from "react";
+import "./App.css";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      count: 0
+    };
+  }
+
+  increment = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  decrement = () => {
+    if (this.state.count > 0) {
+      this.setState({ count: this.state.count - 1 });
+    }
+  };
+
+  reset = () => {
+    this.setState({ count: 0 });
+  };
+
+  render() {
+    return (
+      <div className="container">
+        <div className="counter-card">
+          <h1>Visitor Counter</h1>
+
+          <h2>Visitor Count</h2>
+          <div className="count">{this.state.count}</div>
+
+          <div className="buttons">
+            <button className="increment" onClick={this.increment}>
+              Increment
+            </button>
+
+            <button className="decrement" onClick={this.decrement}>
+              Decrement
+            </button>
+
+            <button className="reset" onClick={this.reset}>
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
