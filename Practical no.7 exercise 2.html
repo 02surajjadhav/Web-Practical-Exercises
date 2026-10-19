@@ -1,0 +1,60 @@
+import React, { Component } from "react";
+import "./App.css";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visitors: 0
+    };
+  }
+
+  increment = () => {
+    this.setState({ visitors: this.state.visitors + 1 });
+  };
+
+  decrement = () => {
+    if (this.state.visitors > 0) {
+      this.setState({ visitors: this.state.visitors - 1 });
+    }
+  };
+
+  reset = () => {
+    this.setState({ visitors: 0 });
+  };
+
+  render() {
+    return (
+      <div className="dashboard">
+        <div className="counter-card">
+          <h1>Mall/Event Dashboard</h1>
+          <p className="subtitle">Visitor Management System</p>
+
+          <div className="visitor-box">
+            <h2>Current Visitor Count</h2>
+            <div className="visitor-count">
+              {this.state.visitors}
+            </div>
+            <p>Visitors Present</p>
+          </div>
+
+          <div className="button-group">
+            <button className="increment" onClick={this.increment}>
+              + Increment Visitor
+            </button>
+
+            <button className="decrement" onClick={this.decrement}>
+              - Decrement Visitor
+            </button>
+
+            <button className="reset" onClick={this.reset}>
+              Reset Counter
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
