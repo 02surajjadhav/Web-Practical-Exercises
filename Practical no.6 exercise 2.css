@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 350px;
+  padding: 25px;
+  text-align: center;
+  background-color: white;
+  border: 2px solid #2563eb;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+.college-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 2px solid #2563eb;
+  padding: 5px;
+}
+
+.profile-card h2 {
+  color: #1e3a8a;
+  font-size: 22px;
+}
+
+.student-details {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #eff6ff;
+  border-radius: 10px;
+}
+
+.student-details h3 {
+  color: #2563eb;
+}
+
+.student-details p {
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .profile-card {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .profile-card h2 {
+    font-size: 19px;
+  }
+
+  .student-details p {
+    font-size: 14px;
+  }
+}
