@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter-card {
+  width: 350px;
+  max-width: calc(100% - 40px);
+  padding: 30px;
+  text-align: center;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: #2563eb;
+}
+
+h2 {
+  color: #333;
+}
+
+.count {
+  font-size: 50px;
+  font-weight: bold;
+  color: #2563eb;
+  margin: 20px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.increment {
+  background-color: #16a34a;
+}
+
+.decrement {
+  background-color: #dc2626;
+}
+
+.reset {
+  background-color: #2563eb;
+}
+
+button:hover {
+  opacity: 0.8;
+  transform: scale(1.03);
+}
