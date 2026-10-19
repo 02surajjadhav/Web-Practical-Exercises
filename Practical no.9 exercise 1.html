@@ -1,0 +1,60 @@
+import React, { useState, useEffect } from "react";
+import "./App.css";
+
+function App() {
+  const [task, setTask] = useState("");
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    document.title = `Tasks: ${tasks.length}`;
+  }, [tasks]);
+
+  const addTask = () => {
+    if (task.trim() !== "") {
+      setTasks([...tasks, { id: Date.now(), text: task.trim() }]);
+      setTask("");
+    }
+  };
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((item) => item.id !== id));
+  };
+
+  return (
+    <div className="container">
+      <div className="todo-card">
+        <h1>To-Do List</h1>
+
+        <div className="input-section">
+          <input
+            type="text"
+            placeholder="Enter a task"
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && addTask()}
+          />
+
+          <button onClick={addTask}>Add Task</button>
+        </div>
+
+        <h3>Total Tasks: {tasks.length}</h3>
+
+        <ul>
+          {tasks.map((item) => (
+            <li key={item.id}>
+              <span>{item.text}</span>
+              <button
+                className="delete-btn"
+                onClick={() => deleteTask(item.id)}
+              >
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default App;
