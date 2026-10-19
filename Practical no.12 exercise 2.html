@@ -1,0 +1,116 @@
+import React, { useState } from "react";
+import "./EmployeeForm.css";
+
+function EmployeeForm() {
+  const [employee, setEmployee] = useState({
+    name: "",
+    department: "",
+    designation: "",
+    salary: ""
+  });
+
+  const [employees, setEmployees] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
+
+  const handleChange = (e) => {
+    setEmployee({
+      ...employee,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (editIndex === null) {
+      setEmployees([...employees, employee]);
+    } else {
+      const updatedEmployees = [...employees];
+      updatedEmployees[editIndex] = employee;
+      setEmployees(updatedEmployees);
+      setEditIndex(null);
+    }
+
+    setEmployee({
+      name: "",
+      department: "",
+      designation: "",
+      salary: ""
+    });
+  };
+
+  const handleEdit = (index) => {
+    setEmployee({ ...employees[index] });
+    setEditIndex(index);
+  };
+
+  return (
+    <div className="container">
+      <h2>Employee Form</h2>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Employee Name"
+          value={employee.name}
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          type="text"
+          name="department"
+          placeholder="Department"
+          value={employee.department}
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          type="text"
+          name="designation"
+          placeholder="Designation"
+          value={employee.designation}
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          type="number"
+          name="salary"
+          placeholder="Salary"
+          min="0"
+          value={employee.salary}
+          onChange={handleChange}
+          required
+        />
+
+        <button type="submit">
+          {editIndex === null ? "Add Employee" : "Update Employee"}
+        </button>
+      </form>
+
+      <h2>Employee List</h2>
+
+      {employees.length === 0 ? (
+        <p>No employee records available.</p>
+      ) : (
+        employees.map((emp, index) => (
+          <div className="employee-card" key={index}>
+            <p><b>Name:</b> {emp.name}</p>
+            <p><b>Department:</b> {emp.department}</p>
+            <p><b>Designation:</b> {emp.designation}</p>
+            <p><b>Salary:</b> ₹{emp.salary}</p>
+
+            <button onClick={() => handleEdit(index)}>
+              Edit
+            </button>
+          </div>
+        ))
+      )}
+    </div>
+  );
+}
+
+export default EmployeeForm;
